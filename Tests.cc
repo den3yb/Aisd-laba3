@@ -30,13 +30,14 @@ TEST(Tests3, pyromid) {
 	EXPECT_EQ(a, b);
 }
 
-TEST(Tests4, random1) {
+
+TEST(Tests4, quick_test) {
 	setlocale(LC_ALL, "Russian");
 	cycle_random_quick();
+	cycle_order_quick();
+	cycle_reverse_quick();
 	EXPECT_EQ(1, 1);
 }
-
-
 
 
 

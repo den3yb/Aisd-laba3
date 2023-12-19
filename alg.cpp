@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <random>
 #include <vector>
 #include <stdexcept>
+
 using namespace std;
 
 namespace algoritms {
@@ -80,6 +82,7 @@ namespace algoritms {
         }
     }
 
+    
     stats one_random_quick(int size, int seed) {
         stats s;
         vector<int> temp;
@@ -92,6 +95,8 @@ namespace algoritms {
 
     void cycle_random_quick() {
         int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\quick_rand.txt");
         for (int i = 0; i < 7; i++) {
             stats s;
             for (int j = 0; j < 100; j++) {
@@ -102,12 +107,62 @@ namespace algoritms {
             }
             s.comparison_count /= 100;
             s.copy_count /= 100;
-            
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
         }
+        fout.close();
     }
 
-    void write(stats& s, int count){
-        ofstream fout("quick_random.txt",std::ios::app);
-        
+    stats one_order_quick(int size) {
+        stats s;
+        vector<int> temp;
+        for (int i = 0; i < size; i++) { temp.push_back(i);}
+        quick(temp, 0, temp.size() - 1, s);
+        return s;
+    }
+
+    void cycle_order_quick() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\quick_order.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_order_quick(lenght[i]);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
+
+    stats one_reverse_quick(int size) {
+        stats s;
+        vector<int> temp;
+        for (int i = size; i > 0; i--) { temp.push_back(i); }
+        quick(temp, 0, temp.size() - 1, s);
+        return s;
+    }
+
+    void cycle_reverse_quick() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\quick_reverse.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_reverse_quick(lenght[i]);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
     }
 }

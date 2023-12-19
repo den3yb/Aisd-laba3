@@ -18,7 +18,7 @@ if(MSVC)
 endif()
 
 
-add_library(alg SHARED "alg.cpp")
+add_library(alg SHARED "alg.cpp" )
 target_include_directories(alg PUBLIC "include")
 
 # Подключаем googletest
