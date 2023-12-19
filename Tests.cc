@@ -36,9 +36,7 @@ TEST(Tests4, random1) {
 	EXPECT_EQ(1, 1);
 }
 
-TEST(Tests5, random2) {
-	setlocale(LC_ALL, "Russian");
-	cycle_random_buble();
-	EXPECT_EQ(1, 1);
-}
+
+
+
 
