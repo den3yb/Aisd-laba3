@@ -32,10 +32,23 @@ TEST(Tests3, pyromid) {
 
 
 TEST(Tests4, quick_test) {
-	setlocale(LC_ALL, "Russian");
 	cycle_random_quick();
 	cycle_order_quick();
 	cycle_reverse_quick();
+	EXPECT_EQ(1, 1);
+}
+
+TEST(Tests5, bubble_test) {
+	cycle_random_bubble();
+	cycle_order_bubble();
+	cycle_reverse_bubble();
+	EXPECT_EQ(1, 1);
+}
+
+TEST(Tests5, pyramid_test) {
+	cycle_random_pyramid();
+	cycle_order_pyramid();
+	cycle_reverse_pyramid();
 	EXPECT_EQ(1, 1);
 }
 

@@ -165,4 +165,186 @@ namespace algoritms {
         }
         fout.close();
     }
+
+
+
+
+
+
+
+
+
+
+
+    stats one_random_bubble(int size, int seed) {
+        stats s;
+        vector<int> temp;
+        mt19937 generator(seed);
+        uniform_int_distribution<> distribution(0, 10000);
+        for (int i = 0; i < size; i++) { temp.push_back(distribution(generator)); }
+        bubble(temp, s);
+        return s;
+    }
+
+    void cycle_random_bubble() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\bubble_rand.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_random_bubble(lenght[i], j * 10 + i);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
+
+    stats one_order_bubble(int size) {
+        stats s;
+        vector<int> temp;
+        for (int i = 0; i < size; i++) { temp.push_back(i); }
+        bubble(temp, s);
+        return s;
+    }
+
+    void cycle_order_bubble() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\bubble_order.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_order_bubble(lenght[i]);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
+
+    stats one_reverse_bubble(int size) {
+        stats s;
+        vector<int> temp;
+        for (int i = size; i > 0; i--) { temp.push_back(i); }
+        bubble(temp, s);
+        return s;
+    }
+
+    void cycle_reverse_bubble() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\bubble_reverse.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_reverse_bubble(lenght[i]);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
+
+
+
+
+
+
+
+    stats one_random_pyramid(int size, int seed) {
+        stats s;
+        vector<int> temp;
+        mt19937 generator(seed);
+        uniform_int_distribution<> distribution(0, 10000);
+        for (int i = 0; i < size; i++) { temp.push_back(distribution(generator)); }
+        pyramid_sort(temp, s);
+        return s;
+    }
+
+    void cycle_random_pyramid() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\pyramid_rand.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_random_pyramid(lenght[i], j * 10 + i);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
+
+    stats one_order_pyramid(int size) {
+        stats s;
+        vector<int> temp;
+        for (int i = 0; i < size; i++) { temp.push_back(i); }
+        pyramid_sort(temp, s);
+        return s;
+    }
+
+    void cycle_order_pyramid() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\pyramid_order.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_order_pyramid(lenght[i]);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
+
+    stats one_reverse_pyramid(int size) {
+        stats s;
+        vector<int> temp;
+        for (int i = size; i > 0; i--) { temp.push_back(i); }
+        pyramid_sort(temp, s);
+        return s;
+    }
+
+    void cycle_reverse_pyramid() {
+        int lenght[] = { 1000,3000,5000,10000,25000,50000,100000 };
+        ofstream fout;
+        fout.open("C:\\Proganiy\\Aisd-laba3\\pyramid_reverse.txt");
+        for (int i = 0; i < 7; i++) {
+            stats s;
+            for (int j = 0; j < 100; j++) {
+                stats temp;
+                temp = one_reverse_pyramid(lenght[i]);
+                s.comparison_count += temp.comparison_count;
+                s.copy_count += temp.copy_count;
+            }
+            s.comparison_count /= 100;
+            s.copy_count /= 100;
+            if (fout.is_open()) { fout << lenght[i] << " " << s.comparison_count << " " << s.copy_count << endl; }
+        }
+        fout.close();
+    }
 }
